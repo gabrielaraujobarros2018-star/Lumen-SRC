@@ -1,0 +1,3 @@
+void proc_cpuinfo(char* out){
+    __asm__ volatile("cpuid":"=a"(*(int*)out):"a"(0));
+}

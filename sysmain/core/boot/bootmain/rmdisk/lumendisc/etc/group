@@ -1,0 +1,8 @@
+root:x:0:
+system:x:100:
+shell:x:101:
+log:x:102:
+
+# No dynamic group allocation
+# Groups are static
+# Security over flexibility

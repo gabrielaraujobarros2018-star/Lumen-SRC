@@ -1,0 +1,11 @@
+# PalisadeOS fstab
+# <device> <mount> <type> <opts> <dump> <pass>
+
+rootfs  /        ramfs  rw,nosuid,nodev,noexec  0  0
+proc    /proc    proc   rw,nosuid,nodev,noexec  0  0
+tmpfs   /data    tmpfs  rw,nosuid,nodev          0  0
+devtmpfs /dev    devtmpfs rw,nosuid              0  0
+
+# No swap
+# No network mounts
+# Explicit minimal policy

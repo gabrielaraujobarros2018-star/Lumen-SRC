@@ -1,0 +1,3 @@
+config FRAMEWORK_WIFI_AQUARIUM
+    bool "WiFi Handler Aquarium Framework"
+    default y

@@ -1,0 +1,20 @@
+name: PalisadeOS CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install deps
+        run: sudo apt install -y clang lld llvm make rsync
+
+      - name: Build
+        run: |
+          chmod +x builds/scripts/*.sh
+          builds/scripts/ci-entry.sh

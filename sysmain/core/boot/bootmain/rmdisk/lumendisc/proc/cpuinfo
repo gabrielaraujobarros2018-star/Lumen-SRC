@@ -1,0 +1,9 @@
+processor   : 0
+vendor_id   : Palisade
+model name  : Generic x86_64
+cpu MHz     : unknown
+cache size  : unknown
+flags       : fpu mmx sse sse2
+
+# Static procfs stub
+# Replaced later by kernel procfs

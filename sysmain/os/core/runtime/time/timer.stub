@@ -1,0 +1,3 @@
+TIMER_SOURCE=kernel
+FALLBACK=monotonic
+ALLOW_BUSYWAIT=false

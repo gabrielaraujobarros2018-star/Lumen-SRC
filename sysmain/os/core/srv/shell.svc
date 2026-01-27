@@ -1,0 +1,14 @@
+service=shell
+autostart=true
+restart=true
+critical=false
+depends=kernel,gui
+priority=medium
+timeout-ms=0
+interactive=true
+logging=normal
+sandboxed=true
+user=default
+recoverable=true
+system-owned
+end

@@ -1,0 +1,14 @@
+bridge=shell
+direction=input-output
+protocol=text
+interactive=true
+blocking=false
+validated=true
+monitored
+audited
+sandboxed
+recoverable
+shell-owned
+system-critical
+do-not-edit
+end

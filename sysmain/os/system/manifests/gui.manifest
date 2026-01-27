@@ -1,0 +1,13 @@
+component=gui
+name=Neopunk2048
+version=1.0.2
+backend=framebuffer
+signed=true
+checksum=required
+dependencies=kernel,sysl
+boot-critical=false
+rollback-safe=true
+verified=true
+immutable
+system-owned
+end

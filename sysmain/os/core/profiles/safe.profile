@@ -1,0 +1,15 @@
+profile=safe
+cpu=conservative
+memory=minimal
+scheduler=simple
+gui=basic
+logging=verbose
+security=strict
+network=disabled
+debug=true
+power=limited
+thermal=locked
+sandbox=on
+recovery=forced
+system-owned
+end

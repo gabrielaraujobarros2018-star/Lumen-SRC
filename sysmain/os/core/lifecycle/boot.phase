@@ -1,0 +1,17 @@
+phase:init
+phase:kernel
+phase:memory
+phase:drivers
+phase:sysl
+phase:gui
+phase:shell
+phase:ready
+current=ready
+linear
+non-reentrant
+monitored
+logged
+recoverable
+atomic
+system-owned
+end

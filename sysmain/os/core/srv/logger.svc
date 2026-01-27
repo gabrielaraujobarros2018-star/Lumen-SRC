@@ -1,0 +1,14 @@
+service=logger
+autostart=true
+restart=true
+critical=true
+depends=kernel
+priority=high
+timeout-ms=0
+buffered=true
+persistent=false
+rotation=enabled
+sandboxed=true
+recoverable=true
+system-owned
+end

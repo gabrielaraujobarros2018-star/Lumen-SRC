@@ -1,0 +1,17 @@
+PalisadeOS
+stable
+official
+human-readable
+no-alias
+case-sensitive
+ascii
+utf-8
+kernel-bound
+user-visible
+immutable
+verified
+non-localized
+primary-name
+do-not-edit
+system-owned
+end

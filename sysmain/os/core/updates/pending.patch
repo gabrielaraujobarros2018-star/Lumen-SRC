@@ -1,0 +1,13 @@
+pending=false
+patch-id=none
+size=0
+verified=false
+applied=false
+rollback-ready=false
+requires-reboot=false
+kernel-change=false
+gui-change=false
+sysl-change=false
+user-visible=false
+system-owned
+end

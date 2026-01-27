@@ -1,0 +1,15 @@
+mode=clean
+allow-reboot=true
+allow-poweroff=true
+allow-halt=true
+sync-disks=true
+flush-logs=true
+notify-services=true
+gui-first=true
+kernel-last=true
+timeout-ms=3000
+fallback=forced
+safe=true
+system-owned
+do-not-edit
+end

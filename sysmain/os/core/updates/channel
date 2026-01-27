@@ -1,0 +1,13 @@
+channel=stable
+auto-check=false
+auto-apply=false
+network-required=true
+signature-required=true
+rollback-enabled=true
+delta-updates=true
+offline-safe=true
+user-visible=true
+kernel-aware=true
+gui-aware=true
+system-owned
+end

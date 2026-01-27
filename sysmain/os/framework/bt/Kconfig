@@ -1,0 +1,3 @@
+config FRAMEWORK_BT_AQ
+    bool "Bluetooth Audio Quality Framework"
+    default y

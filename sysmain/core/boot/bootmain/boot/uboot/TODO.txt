@@ -1,0 +1,164 @@
+U-Boot 2026.04-rc1 – Lumen Patch TODO
+===================================
+
+Target:
+- Architecture: ARMv7-A only
+- Platform: Android devices only
+- Kernel: Linux 2.6.35 (patched)
+- Boot image: Android boot image (boot.img)
+- Hardware description: Device Tree only
+- Goal: Deterministic, non-interactive boot
+
+--------------------------------------------------
+[ARCHITECTURE & PLATFORM SCOPE]
+--------------------------------------------------
+
+[ ] Lock build system to ARMv7 only
+[ ] Remove or disable x86, ARM64, and non-ARM code paths
+[ ] Disable UEFI, EFI loader, and PC-related configs
+[ ] Remove BIOS and legacy PC assumptions
+[ ] Ensure SoC-first, not board-generic, logic
+
+--------------------------------------------------
+[BOARD SUPPORT]
+--------------------------------------------------
+
+[ ] Create Lumen-specific board directory
+[ ] Define single reference board (Samsung A05s)
+[ ] Remove unused generic board code
+[ ] Ensure board init sequence is minimal and ordered
+[ ] Avoid multi-board abstraction layers
+
+--------------------------------------------------
+[DEVICE TREE HANDLING]
+--------------------------------------------------
+
+[ ] Ensure DTB is mandatory (no fallback)
+[ ] Validate DT handoff to Linux 2.6.35
+[ ] Strip non-DT hardware probing paths
+[ ] Ensure memory, UART, timers come only from DT
+[ ] Keep DT logic simple and explicit
+
+--------------------------------------------------
+[BOOT FLOW]
+--------------------------------------------------
+
+[ ] Define single boot flow (no alternatives)
+[ ] Disable interactive autoboot interruption
+[ ] Remove menu-based boot selection
+[ ] Ensure autoboot timeout is minimal or zero
+[ ] Fail fast if boot prerequisites are missing
+
+--------------------------------------------------
+[ANDROID BOOT IMAGE SUPPORT]
+--------------------------------------------------
+
+[ ] Verify Android boot.img parsing works correctly
+[ ] Ensure kernel + ramdisk + DTB layout matches 2.6.35
+[ ] Patch any assumptions expecting modern kernels
+[ ] Ensure bootargs compatibility with old kernel
+[ ] Avoid Android features not required by Lumen
+
+--------------------------------------------------
+[MEMORY & RAMDISK]
+--------------------------------------------------
+
+[ ] Validate memory map matches kernel expectations
+[ ] Ensure initrd/initramfs loading works reliably
+[ ] Avoid dynamic relocation complexity if unnecessary
+[ ] Keep memory usage deterministic and minimal
+[ ] Remove PC-style memory discovery
+
+--------------------------------------------------
+[SERIAL & DEBUG OUTPUT]
+--------------------------------------------------
+
+[ ] Ensure early serial output via DT-defined UART
+[ ] Remove legacy serial port assumptions
+[ ] Disable verbose debug output by default
+[ ] Keep panic/failure output minimal but reliable
+[ ] No graphical or menu output
+
+--------------------------------------------------
+[STORAGE & PARTITIONS]
+--------------------------------------------------
+
+[ ] Ensure eMMC/UFS access works reliably
+[ ] Patch partition handling to match Android layout
+[ ] Remove filesystem-based boot dependencies
+[ ] Avoid scanning unused storage devices
+[ ] Keep block access explicit and limited
+
+--------------------------------------------------
+[POWER & RESET]
+--------------------------------------------------
+
+[ ] Ensure correct reset behavior on failure
+[ ] Patch power-off / reboot hooks if required
+[ ] Remove PC power semantics
+[ ] Keep power handling SoC-specific
+[ ] Avoid long delays or retries
+
+--------------------------------------------------
+[SECURITY & VERIFIED BOOT]
+--------------------------------------------------
+
+[ ] Decide scope of vbmeta handling (minimal)
+[ ] Disable unused crypto features
+[ ] Avoid complex secure boot chains
+[ ] Keep verification logic explicit or absent
+[ ] Document security assumptions clearly
+
+--------------------------------------------------
+[COMMAND & FEATURE REDUCTION]
+--------------------------------------------------
+
+[ ] Remove unused U-Boot commands
+[ ] Disable shell-like features if not needed
+[ ] Remove network boot features (PXE, TFTP, DHCP)
+[ ] Keep only commands required for bring-up/debug
+[ ] Ensure production build is non-interactive
+
+--------------------------------------------------
+[ENVIRONMENT HANDLING]
+--------------------------------------------------
+
+[ ] Minimize environment variable usage
+[ ] Prefer hardcoded boot logic over env scripts
+[ ] Disable persistent env storage if unnecessary
+[ ] Avoid user-modifiable boot behavior
+[ ] Ensure reproducible boot every time
+
+--------------------------------------------------
+[BUILD & TOOLING]
+--------------------------------------------------
+
+[ ] Create Lumen-specific defconfig
+[ ] Ensure reproducible builds
+[ ] Lock compiler assumptions (ARMv7 ABI)
+[ ] Remove unused build targets
+[ ] Keep build logs clean and short
+
+--------------------------------------------------
+[DOCUMENTATION]
+--------------------------------------------------
+
+[ ] Document Lumen-specific U-Boot patches
+[ ] Record removed features explicitly
+[ ] Maintain UNSUPPORTED list (PC features, UEFI, etc.)
+[ ] Keep boot contract documented and stable
+
+--------------------------------------------------
+[NON-GOALS – DO NOT ADD]
+--------------------------------------------------
+
+- UEFI support
+- BIOS compatibility
+- PXE / network boot
+- Multi-boot menus
+- Interactive boot shells
+- Generic board frameworks
+- PC hardware compatibility
+
+--------------------------------------------------
+End of TODO

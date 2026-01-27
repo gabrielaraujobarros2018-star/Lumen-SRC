@@ -1,0 +1,172 @@
+# ============================================================
+# PalisadeOS — BUILD LOCK FILE
+# ============================================================
+# PURPOSE:
+#   Freeze all boot-critical artifacts and environment inputs
+#   to guarantee reproducible, flashable, deterministic builds.
+#
+# STATUS:
+#   IMMUTABLE — DO NOT EDIT AFTER RELEASE TAG
+#
+# VERSION:
+#   PalisadeOS-b01262026
+#
+# DATE:
+#   2026-01-26
+#
+# ============================================================
+
+
+# ------------------------------------------------------------
+# CORE ARTIFACTS (BOOT-CRITICAL)
+# ------------------------------------------------------------
+
+KERNEL_IMAGE=kernel.img
+KERNEL_FORMAT=flat
+KERNEL_ARCH=multi
+KERNEL_ENTRY=0x80080000
+KERNEL_SHA256=REPLACE_WITH_REAL_HASH
+KERNEL_SIZE_BYTES=REPLACE_WITH_REAL_SIZE
+
+RUNTIME_ELF=palisade_runtime.elf
+RUNTIME_FORMAT=ELF64
+RUNTIME_ARCH=multi
+RUNTIME_ENTRY=resolved_by_loader
+RUNTIME_SHA256=REPLACE_WITH_REAL_HASH
+RUNTIME_SIZE_BYTES=REPLACE_WITH_REAL_SIZE
+
+DEVICE_TREE=platform.dtb
+DTB_ARCH=arm64
+DTB_SHA256=REPLACE_WITH_REAL_HASH
+DTB_SIZE_BYTES=REPLACE_WITH_REAL_SIZE
+
+
+# ------------------------------------------------------------
+# IMAGE LAYOUT (FLASH + BOOT CONTRACT)
+# ------------------------------------------------------------
+
+IMAGE_NAME=palisade.img
+IMAGE_TYPE=raw
+IMAGE_SIZE_MB=64
+IMAGE_ALIGNMENT_BYTES=1048576
+
+OFFSET_MBR=0
+OFFSET_KERNEL=1048576          # 1 MiB
+OFFSET_RUNTIME=16777216        # 16 MiB
+OFFSET_DTB=33554432            # 32 MiB
+
+ALLOW_PADDING=true
+ALLOW_UNUSED_SPACE=true
+
+
+# ------------------------------------------------------------
+# PLATFORM LOCK-IN
+# ------------------------------------------------------------
+
+# ANDROID
+ANDROID_DEVICE_LOCKED=true
+ANDROID_DEVICE_NAME=Galaxy_A05s
+ANDROID_RAM_BASE=0x80000000
+ANDROID_RAM_SIZE_MB=4096
+ANDROID_KERNEL_LOAD_ADDR=0x80080000
+ANDROID_FASTBOOT_REQUIRED=true
+
+# PC / DESKTOP
+PC_UEFI_REQUIRED=true
+PC_BIOS_SUPPORTED=true
+PC_FRAMEBUFFER_OPTIONAL=true
+PC_SERIAL_REQUIRED=true
+
+
+# ------------------------------------------------------------
+# TOOLCHAIN FREEZE (NO REBUILD)
+# ------------------------------------------------------------
+
+TOOLCHAIN_NAME=termux-clang
+TOOLCHAIN_VERSION=2026.01
+TOOLCHAIN_TARGETS=arm64,x86_64
+TOOLCHAIN_PATH=/data/data/com.termux/files/usr/bin
+TOOLCHAIN_SHA256=REPLACE_WITH_REAL_HASH
+
+LINKER=ld.lld
+LINKER_VERSION=locked
+LINKER_SCRIPT=Linker.ld
+
+
+# ------------------------------------------------------------
+# BUILD ENVIRONMENT
+# ------------------------------------------------------------
+
+HOST_OS=Android
+HOST_ENV=Termux
+HOST_ARCH=aarch64
+
+ENDIANNESS=little
+WORD_SIZE=64
+ABI=lp64
+
+
+# ------------------------------------------------------------
+# RUNTIME CONTRACT
+# ------------------------------------------------------------
+
+RUNTIME_INIT_REQUIRED=true
+RUNTIME_INIT_PHASE=complete
+RUNTIME_ALLOW_EXIT=false
+RUNTIME_ALLOW_PANIC=false
+
+RUNTIME_IDLE_REQUIRED=true
+RUNTIME_IDLE_MODE=kernel
+
+RUNTIME_TIMER_SOURCE=kernel
+RUNTIME_TIMER_FALLBACK=monotonic
+
+RUNTIME_WATCHDOG_MODE=observe
+RUNTIME_WATCHDOG_TIMEOUT=0
+
+
+# ------------------------------------------------------------
+# ERROR & SAFETY GUARANTEES
+# ------------------------------------------------------------
+
+PANIC_IS_FATAL=true
+PANIC_LOG_REQUIRED=true
+PANIC_REBOOT=false
+
+HALT_PATH=syscall:power_halt
+REBOOT_PATH=syscall:power_reboot
+
+ALL_ERROR_PATHS_LOUD=true
+SILENT_FAILURES_FORBIDDEN=true
+
+
+# ------------------------------------------------------------
+# REPRODUCIBILITY GUARANTEES
+# ------------------------------------------------------------
+
+ALLOW_REBUILD=false
+ALLOW_RELINK=false
+ALLOW_REPACK=true
+
+REPRODUCIBLE_IMAGE=true
+DETERMINISTIC_LAYOUT=true
+NONDETERMINISM_FORBIDDEN=true
+
+
+# ------------------------------------------------------------
+# RELEASE METADATA
+# ------------------------------------------------------------
+
+RELEASE_TAG=PalisadeOS-b01262026
+BOOTABLE_MILESTONE=true
+
+KERNEL_UNCHANGED=true
+BOOTLOADER_UNCHANGED=true
+RUNTIME_CODE_UNCHANGED=true
+
+SIGNED=false
+VERIFIED_BY=manual_test
+
+# ------------------------------------------------------------
+# END OF FILE
+# ------------------------------------------------------------

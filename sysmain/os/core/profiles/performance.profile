@@ -1,0 +1,15 @@
+profile=performance
+cpu=aggressive
+memory=expanded
+scheduler=lowlatency
+gui=full
+logging=minimal
+security=standard
+network=enabled
+debug=false
+power=maximum
+thermal=monitored
+sandbox=on
+recovery=enabled
+system-owned
+end

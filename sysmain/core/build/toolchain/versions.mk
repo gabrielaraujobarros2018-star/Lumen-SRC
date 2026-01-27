@@ -1,0 +1,9 @@
+LLVM_VERSION := 17.0.6
+GCC_VERSION  := 13.2.0
+BINUTILS_VER := 2.41
+
+TARGETS := x86_64-palisade aarch64-palisade
+
+export LLVM_VERSION
+export GCC_VERSION
+export BINUTILS_VER

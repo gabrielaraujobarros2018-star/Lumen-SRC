@@ -1,0 +1,34 @@
+CC=clang
+LD=ld.lld
+
+CFLAGS="
+-ffreestanding
+-fno-builtin
+-fno-stack-protector
+-nostdlib
+-nostartfiles
+-O2
+-Wall
+"
+
+LDFLAGS="
+-T setup_wizard.ld
+"
+
+OBJS="
+main.o
+gui.o
+wifi_step.o
+assets_step.o
+drivers_step.o
+framebuffer.o
+"
+
+$CC $CFLAGS -c main.c
+$CC $CFLAGS -c gui.c
+$CC $CFLAGS -c wifi_step.c
+$CC $CFLAGS -c assets_step.c
+$CC $CFLAGS -c drivers_step.c
+$CC $CFLAGS -c framebuffer.c
+
+$LD $LDFLAGS $OBJS -o palisade_setup_wizard

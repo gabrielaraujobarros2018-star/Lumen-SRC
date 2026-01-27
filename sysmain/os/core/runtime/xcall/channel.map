@@ -1,0 +1,8 @@
+# channel.map
+# src -> dst -> mode
+
+shell -> ipc -> sync
+gui -> compositor -> async
+services -> watchdog -> signal
+kernel -> runtime -> shared
+recovery -> lifecycle -> sync

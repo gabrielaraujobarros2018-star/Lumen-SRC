@@ -1,0 +1,21 @@
+#!/bin/sh
+# PalisadeOS ls
+# Minimal directory lister
+# No glob expansion tricks
+
+dir="."
+if [ -n "$1" ]; then
+    dir="$1"
+fi
+
+if [ ! -d "$dir" ]; then
+    printf "ls: %s: not a directory\n" "$dir"
+    exit 1
+fi
+
+for entry in "$dir"/*; do
+    name="${entry##*/}"
+    printf "%s\n" "$name"
+done
+
+exit 0

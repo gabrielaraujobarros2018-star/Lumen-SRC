@@ -1,0 +1,13 @@
+service=watchdog
+autostart=true
+restart=true
+critical=true
+depends=kernel
+priority=highest
+timeout-ms=500
+panic-on-failure=true
+logging=forced
+sandboxed=false
+recoverable=false
+system-owned
+end

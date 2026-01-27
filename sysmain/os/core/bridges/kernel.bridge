@@ -1,0 +1,16 @@
+bridge=kernel
+direction=bidirectional
+protocol=text
+sync=atomic
+timeout-ms=500
+validated=true
+panic-aware
+versioned
+monitored
+audited
+recoverable
+no-bypass
+kernel-owned
+system-critical
+do-not-edit
+end

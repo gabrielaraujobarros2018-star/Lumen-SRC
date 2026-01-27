@@ -1,0 +1,3 @@
+MODE=observe
+TIMEOUT_SEC=0
+LOG_ONLY=true

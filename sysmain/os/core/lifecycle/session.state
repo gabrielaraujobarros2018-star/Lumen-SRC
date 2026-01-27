@@ -1,0 +1,15 @@
+state=active
+headless=false
+gui=true
+shell=true
+user=default
+seat=local
+secure=true
+sandboxed=true
+interactive=true
+persistent=false
+monitored=true
+recoverable=true
+system-owned
+do-not-edit
+end

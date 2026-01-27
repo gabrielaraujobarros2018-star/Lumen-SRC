@@ -1,0 +1,17 @@
+b01132026
+date-based
+utc
+reproducible
+signed
+monotonic
+non-random
+traceable
+kernel-linked
+gui-linked
+sysl-linked
+ramdisk-linked
+boot-linked
+immutable
+system-owned
+do-not-edit
+end

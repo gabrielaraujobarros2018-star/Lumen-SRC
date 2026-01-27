@@ -1,0 +1,14 @@
+dump=disabled
+on-panic=true
+on-watchdog=true
+on-manual=false
+format=text
+compressed=false
+encrypted=false
+kernel-state=true
+gui-state=true
+sysl-state=true
+stacktraces=true
+persistent=false
+system-owned
+end

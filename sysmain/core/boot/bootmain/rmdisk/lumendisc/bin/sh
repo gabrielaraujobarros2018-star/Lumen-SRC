@@ -1,0 +1,24 @@
+#!/bin/sh
+# PalisadeOS shell
+# Very small command loop
+# No job control, no scripts
+
+printf "PalisadeOS shell\n"
+printf "Type 'exit' to leave\n"
+
+while true; do
+    printf "# "
+    read -r line || break
+
+    if [ "$line" = "exit" ]; then
+        break
+    fi
+
+    if [ -z "$line" ]; then
+        continue
+    fi
+
+    sh -c "$line"
+done
+
+exit 0

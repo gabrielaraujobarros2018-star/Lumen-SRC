@@ -1,0 +1,14 @@
+component=sysl
+name=SLFS
+version=1.0.2
+text-only=true
+posix-compliant=true
+signed=true
+checksum=required
+dependencies=kernel
+boot-critical=true
+rollback-safe=true
+verified=true
+immutable
+system-owned
+end

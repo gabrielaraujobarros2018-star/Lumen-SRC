@@ -1,0 +1,17 @@
+palisadeos-core
+integrity-required
+sha256
+verified-at-boot
+verified-at-update
+verified-at-recovery
+no-network-dependence
+offline-safe
+tamper-evident
+read-only
+kernel-enforced
+user-visible
+diagnostic-readable
+failure-fatal
+system-owned
+do-not-edit
+end

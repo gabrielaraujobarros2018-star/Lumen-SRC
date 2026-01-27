@@ -1,0 +1,10 @@
+Target: ARM64
+Boot Protocol: boot.img
+Chain: fastboot → boot.img → kernel Image
+
+No secure boot replacement.
+No vbmeta modification.
+Kernel loaded at fixed physical address.
+DTB appended.
+
+Not active in b01182026.

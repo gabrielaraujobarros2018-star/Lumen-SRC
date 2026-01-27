@@ -1,0 +1,5 @@
+[BOOT] -> EARLY
+[EARLY] -> RUNTIME
+[RUNTIME] -> USER
+[USER] -> RECOVERY (if fault)
+[RECOVERY] -> RUNTIME

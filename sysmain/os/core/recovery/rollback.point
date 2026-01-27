@@ -1,0 +1,15 @@
+rollback=enabled
+last-good=1.0.1
+snapshot=valid
+atomic=true
+verified=true
+boot-safe=true
+manual=false
+automatic=true
+kernel-aware
+gui-aware
+sysl-aware
+timeout-ms=2000
+system-owned
+do-not-edit
+end

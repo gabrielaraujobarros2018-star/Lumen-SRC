@@ -1,0 +1,14 @@
+service=compositor
+autostart=true
+restart=true
+critical=true
+depends=kernel,sysl
+priority=high
+timeout-ms=1000
+healthcheck=enabled
+logging=normal
+sandboxed=true
+user=system
+recoverable=true
+system-owned
+end

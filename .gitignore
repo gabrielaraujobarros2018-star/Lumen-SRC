@@ -1,0 +1,9 @@
+*.img
+*.bin
+*.o
+*.a
+*.so
+*.zip
+*.tar
+*.tar.xz
+*.tar.gz

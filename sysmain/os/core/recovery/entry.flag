@@ -1,0 +1,14 @@
+recovery=false
+last-boot=clean
+forced=false
+user-requested=false
+kernel-triggered=false
+gui-triggered=false
+watchdog-triggered=false
+safe-profile=false
+timestamp=none
+validated=true
+monitored=true
+system-owned
+do-not-edit
+end

@@ -1,0 +1,13 @@
+component=ramdisk
+name=RD_NMOS
+version=1.0.2
+compressed=true
+signed=true
+checksum=required
+dependencies=kernel
+boot-critical=true
+rollback-safe=true
+verified=true
+immutable
+system-owned
+end

@@ -1,0 +1,14 @@
+bridge=sysl
+direction=bidirectional
+protocol=fs
+atomic=true
+transactional=true
+rollback=true
+validated=true
+monitored
+audited
+recoverable
+kernel-enforced
+system-owned
+do-not-edit
+end

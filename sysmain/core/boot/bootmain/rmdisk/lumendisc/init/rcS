@@ -1,0 +1,20 @@
+#!/bin/sh
+# PalisadeOS init script
+# Stage-1 userspace
+
+mount -t proc proc /proc
+mount -t tmpfs tmpfs /data
+
+printf "[init] PalisadeOS rcS start\n"
+
+if [ ! -f /system/kernel.cfg ]; then
+    printf "[panic] missing kernel.cfg\n"
+    while true; do :; done
+fi
+
+hostname "$(cat /etc/hostname)"
+
+printf "[init] mounts OK\n"
+printf "[init] launching shell\n"
+
+exec /bin/sh

@@ -1,0 +1,174 @@
+{\rtf1\ansi\deff0
+{\fonttbl{\f0\fswiss\fcharset0 Arial;}{\f1\fmodern\fcharset0 Courier New;}}
+\paperw12240\paperh15840
+\margl1440\margr1440\margt1440\margb1440
+
+\f0\fs24
+\b Aura Words – Flashing Guide (Desktop & Phone)\b0
+\par
+\par
+
+Aura Words is distributed as a compiled \b .img\b0 system application for PalisadeOS.
+This document explains how to correctly flash and install the image on both desktop and phone devices running PalisadeOS.
+\par
+\par
+
+\b Important Concept\b0
+\par
+Aura Words is a system-level application, not a user-space app.
+It must be placed in the correct PalisadeOS framework directory to be recognized and executed.
+\par
+\par
+
+\b Files Provided\b0
+\par
+\f1
+AuraWords.img   (Compiled system application)
+AuraWords.zip   (Source code and project archive)
+\f0
+\par
+\par
+
+\b Target Installation Path\b0
+\par
+\f1
+/palisade/os/framework/framework.Apps/
+programIMPORTS.Custom/adminApps/
+\f0
+\par
+\par
+
+\b =============================\b0
+\par
+\b Flashing on Desktop (PalisadeOS)\b0
+\par
+\b =============================\b0
+\par
+
+\b Step 1 – Boot into PalisadeOS\b0
+\par
+Start the desktop system normally into PalisadeOS.
+Ensure you have admin or system-level access.
+\par
+\par
+
+\b Step 2 – Mount System Partition (if needed)\b0
+\par
+Some configurations require manual mounting of the system partition.
+\par
+\f1
+mount /dev/palisade-system /palisade
+\f0
+\par
+\par
+
+\b Step 3 – Copy the Image\b0
+\par
+Navigate to the adminApps directory and copy the image:
+\par
+\f1
+cp AuraWords.img \\
+/palisade/os/framework/framework.Apps/
+programIMPORTS.Custom/adminApps/
+\f0
+\par
+\par
+
+\b Step 4 – Set Permissions\b0
+\par
+Ensure the binary is executable:
+\par
+\f1
+chmod +x AuraWords.img
+\f0
+\par
+\par
+
+\b Step 5 – Refresh App Registry\b0
+\par
+Reboot or refresh the PalisadeOS application registry.
+After this, Aura Words will appear as a system application.
+\par
+\par
+
+\b =============================\b0
+\par
+\b Flashing on Phone (PalisadeOS)\b0
+\par
+\b =============================\b0
+\par
+
+\b Step 1 – Unlock System Access\b0
+\par
+Enable developer or admin mode on the device.
+System partition access is required.
+\par
+\par
+
+\b Step 2 – Connect via USB or Secure Shell\b0
+\par
+Connect the phone to a desktop using USB or wireless shell.
+\par
+\f1
+palisade-shell connect
+\f0
+\par
+\par
+
+\b Step 3 – Remount System as Writable\b0
+\par
+\f1
+mount -o remount,rw /palisade
+\f0
+\par
+\par
+
+\b Step 4 – Push the Image\b0
+\par
+\f1
+push AuraWords.img \\
+/palisade/os/framework/framework.Apps/
+programIMPORTS.Custom/adminApps/
+\f0
+\par
+\par
+
+\b Step 5 – Apply Permissions\b0
+\par
+\f1
+chmod +x AuraWords.img
+\f0
+\par
+\par
+
+\b Step 6 – Reboot Device\b0
+\par
+Restart the phone to allow PalisadeOS to index the new system app.
+\par
+\par
+
+\b =============================\b0
+\par
+\b Notes on Safety and Persistence\b0
+\par
+• Aura Words is CPU-only and low resource usage
+\par
+• No GPU or driver dependencies
+\par
+• Uses local sandboxed storage
+\par
+• Safe across reboots and updates
+\par
+• Does not interfere with other system components
+\par
+\par
+
+\b Philosophy\b0
+\par
+Aura Words is designed to live inside the system, not on top of it.
+Flashing it correctly ensures it remains a trusted, calm, and freedom-aligned part of PalisadeOS.
+\par
+\par
+
+\b End of Document\b0
+}

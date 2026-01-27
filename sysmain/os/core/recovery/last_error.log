@@ -1,0 +1,14 @@
+error=none
+source=none
+timestamp=none
+severity=none
+panic=false
+recoverable=true
+reported=false
+user-visible=false
+kernel-visible=true
+audited=true
+immutable
+system-owned
+diagnostic
+end

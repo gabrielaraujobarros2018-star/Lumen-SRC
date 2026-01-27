@@ -1,0 +1,3 @@
+HALT=syscall:power_halt
+REBOOT=syscall:power_reboot
+PANIC=runtime:halt_loud

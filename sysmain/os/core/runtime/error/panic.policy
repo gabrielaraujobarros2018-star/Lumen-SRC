@@ -1,0 +1,3 @@
+LOG=true
+HALT=true
+REBOOT=false

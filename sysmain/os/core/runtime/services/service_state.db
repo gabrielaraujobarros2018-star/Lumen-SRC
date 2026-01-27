@@ -1,0 +1,5 @@
+ipc=running
+watchdog=running
+shell=idle
+gui=stopped
+recovery=standby

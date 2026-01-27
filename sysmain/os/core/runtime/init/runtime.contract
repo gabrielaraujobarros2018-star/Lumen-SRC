@@ -1,0 +1,5 @@
+INIT_PHASE=complete
+ALLOW_EXIT=false
+ALLOW_PANIC=false
+REQUIRE_TIMER=true
+REQUIRE_IDLE=true

@@ -1,0 +1,13 @@
+component=kernel
+name=NeoKern
+version=1.0.2
+arch=x86,x86_64
+checksum=required
+signed=true
+dependencies=none
+boot-critical=true
+rollback-safe=true
+verified=true
+immutable
+system-owned
+end

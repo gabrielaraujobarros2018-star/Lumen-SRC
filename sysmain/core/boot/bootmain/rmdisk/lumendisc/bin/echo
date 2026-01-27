@@ -1,0 +1,25 @@
+#!/bin/sh
+# PalisadeOS echo
+# Minimal POSIX-compatible echo
+# No -e extensions, deterministic behavior
+
+print_usage() {
+    printf "usage: echo [STRING...]\n"
+}
+
+if [ "$1" = "--help" ]; then
+    print_usage
+    exit 0
+fi
+
+out=""
+for arg in "$@"; do
+    out="$out$arg "
+done
+
+# Trim trailing space
+out="${out% }"
+
+printf "%s\n" "$out"
+
+exit 0

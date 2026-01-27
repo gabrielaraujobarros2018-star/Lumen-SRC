@@ -1,0 +1,204 @@
+#include <stdint.h>
+#include <stddef.h>
+
+/* NeoKern kernel interfaces */
+extern void fb_clear(uint32_t color);
+extern void fb_print(const char* s);
+extern void fb_println(const char* s);
+extern void fb_draw_rect(int x,int y,int w,int h,uint32_t c);
+
+extern int  kbd_read(char* buf, int max);
+extern void ksleep(uint32_t ms);
+extern void kreboot(void);
+extern void kshutdown(void);
+extern void kpanic(const char* msg);
+
+extern void* kmalloc(size_t sz);
+extern void kfree(void* p);
+
+extern int vfs_list(const char* path, char* out, int max);
+extern int vfs_read(const char* path, char* out, int max);
+extern int vfs_exists(const char* path);
+
+extern const char* cpu_vendor(void);
+extern uint64_t mem_total(void);
+extern uint64_t uptime_ms(void);
+
+extern int gui_init(const char* path);
+extern int gui_shutdown(void);
+extern int gui_running(void);
+
+/* constants */
+#define MAX_CMD   128
+#define MAX_ARGS  8
+#define OUTBUF    1024
+
+/* utility */
+static int strcmp(const char* a,const char* b){
+    while(*a && *b){
+        if(*a!=*b) return *a-*b;
+        a++; b++;
+    }
+    return *a-*b;
+}
+
+static int strlen(const char* s){
+    int i=0;
+    while(s[i]) i++;
+    return i;
+}
+
+static void split(char* cmd,char** argv,int* argc){
+    *argc = 0;
+    while(*cmd && *argc < MAX_ARGS){
+        while(*cmd==' ') cmd++;
+        if(!*cmd) break;
+        argv[*argc] = cmd;
+        (*argc)++;
+        while(*cmd && *cmd!=' ') cmd++;
+        if(*cmd){
+            *cmd = 0;
+            cmd++;
+        }
+    }
+}
+
+/* banner */
+static void shell_banner(){
+    fb_println("NeoKern Shell v0.1");
+    fb_println("Type 'help' for commands.");
+}
+
+/* help */
+static void shell_help(){
+    fb_println("Available commands:");
+    fb_println(" help              - show this message");
+    fb_println(" clear             - clear screen");
+    fb_println(" ls <path>         - list directory");
+    fb_println(" cat <file>        - display file");
+    fb_println(" sysinfo           - cpu/mem/uptime");
+    fb_println(" sleep <ms>        - delay execution");
+    fb_println(" log <msg>         - write kernel log");
+    fb_println(" gui load          - load GUI");
+    fb_println(" gui restart       - restart GUI");
+    fb_println(" gui status        - GUI state");
+    fb_println(" panic             - trigger kernel panic");
+    fb_println(" reboot            - reboot system");
+    fb_println(" shutdown          - power off");
+}
+
+/* commands */
+static void cmd_ls(const char* path){
+    char* buf = kmalloc(OUTBUF);
+    int r = vfs_list(path, buf, OUTBUF);
+    if(r < 0){
+        fb_println("ls: failed");
+    } else {
+        fb_println(buf);
+    }
+    kfree(buf);
+}
+
+static void cmd_cat(const char* path){
+    char* buf = kmalloc(OUTBUF);
+    int r = vfs_read(path, buf, OUTBUF);
+    if(r < 0){
+        fb_println("cat: cannot read file");
+    } else {
+        fb_println(buf);
+    }
+    kfree(buf);
+}
+
+static void cmd_sysinfo(){
+    fb_print("CPU: ");
+    fb_println(cpu_vendor());
+
+    fb_print("Memory: ");
+    char mem[32];
+    uint64_t m = mem_total()/1024/1024;
+    mem[0]=0;
+    int i=0;
+    uint64_t t=m;
+    char tmp[16];
+    int j=0;
+    do{ tmp[j++]=(t%10)+'0'; t/=10; }while(t);
+    while(j--) mem[i++]=tmp[j];
+    mem[i++]='M'; mem[i++]='B'; mem[i]=0;
+    fb_println(mem);
+
+    fb_print("Uptime(ms): ");
+    char up[32];
+    uint64_t u=uptime_ms();
+    i=0; j=0;
+    do{ tmp[j++]=(u%10)+'0'; u/=10; }while(u);
+    while(j--) up[i++]=tmp[j];
+    up[i]=0;
+    fb_println(up);
+}
+
+static void cmd_gui(const char* arg){
+    if(!arg){
+        fb_println("gui: missing argument");
+        return;
+    }
+    if(!strcmp(arg,"load")){
+        if(gui_running()){
+            fb_println("GUI already running");
+            return;
+        }
+        if(!vfs_exists("/Neopunk2048/gui")){
+            fb_println("GUI folder not found");
+            return;
+        }
+        if(gui_init("/Neopunk2048/gui")==0)
+            fb_println("GUI loaded");
+        else
+            fb_println("GUI failed");
+    }
+    else if(!strcmp(arg,"restart")){
+        gui_shutdown();
+        ksleep(200);
+        gui_init("/Neopunk2048/gui");
+        fb_println("GUI restarted");
+    }
+    else if(!strcmp(arg,"status")){
+        fb_println(gui_running() ? "GUI: running" : "GUI: stopped");
+    }
+    else{
+        fb_println("gui: unknown option");
+    }
+}
+
+/* main shell loop */
+void shell_main(){
+    char cmd[MAX_CMD];
+    char* argv[MAX_ARGS];
+    int argc;
+
+    fb_clear(0x00101010);
+    shell_banner();
+
+    while(1){
+        fb_print("> ");
+        int r = kbd_read(cmd, MAX_CMD);
+        if(r <= 0) continue;
+        cmd[r]=0;
+
+        split(cmd, argv, &argc);
+        if(argc == 0) continue;
+
+        if(!strcmp(argv[0],"help")) shell_help();
+        else if(!strcmp(argv[0],"clear")) fb_clear(0x00101010);
+        else if(!strcmp(argv[0],"ls") && argc>1) cmd_ls(argv[1]);
+        else if(!strcmp(argv[0],"cat") && argc>1) cmd_cat(argv[1]);
+        else if(!strcmp(argv[0],"sysinfo")) cmd_sysinfo();
+        else if(!strcmp(argv[0],"sleep") && argc>1) ksleep((uint32_t)atoi(argv[1]));
+        else if(!strcmp(argv[0],"log") && argc>1) fb_println(argv[1]);
+        else if(!strcmp(argv[0],"gui") && argc>1) cmd_gui(argv[1]);
+        else if(!strcmp(argv[0],"panic")) kpanic("Shell panic");
+        else if(!strcmp(argv[0],"reboot")) kreboot();
+        else if(!strcmp(argv[0],"shutdown")) kshutdown();
+        else fb_println("Unknown command");
+    }
+}

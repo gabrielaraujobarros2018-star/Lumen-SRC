@@ -1,0 +1,15 @@
+profile=default
+cpu=balanced
+memory=normal
+scheduler=fair
+gui=enabled
+logging=normal
+security=enforced
+network=enabled
+debug=false
+power=normal
+thermal=auto
+sandbox=on
+recovery=enabled
+system-owned
+end

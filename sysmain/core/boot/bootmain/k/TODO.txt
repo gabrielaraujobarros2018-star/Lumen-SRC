@@ -1,0 +1,148 @@
+Linux 2.6.35 – Lumen Patch TODO
+===============================
+
+Target:
+- Architecture: ARMv7-A only
+- Platform: Android devices
+- Bootloader: U-Boot (modern)
+- Firmware model: Android boot image + Device Tree
+- Scope: Minimal, finishable, maintainable
+
+--------------------------------------------------
+[BOOT & EARLY INIT]
+--------------------------------------------------
+
+[ ] Verify ARMv7 boot protocol compatibility with modern U-Boot
+[ ] Ensure zImage boot path works without legacy assumptions
+[ ] Remove legacy ATAG-only paths if unused
+[ ] Confirm DTB handoff works reliably
+[ ] Patch early printk to work with DT-defined UART only
+[ ] Remove PC / legacy serial fallbacks
+
+--------------------------------------------------
+[DEVICE TREE SUPPORT]
+--------------------------------------------------
+
+[ ] Audit DT parsing code for modern bindings usage
+[ ] Add missing DT helpers needed by Android-era hardware
+[ ] Ensure interrupt, timer, and memory regions are DT-only
+[ ] Remove non-DT hardware discovery paths
+[ ] Lock DT as the single hardware truth source
+
+--------------------------------------------------
+[MEMORY MANAGEMENT]
+--------------------------------------------------
+
+[ ] Validate ARMv7 MMU setup for high memory devices
+[ ] Patch memory layout for modern RAM sizes
+[ ] Ensure CMA or reserved memory regions work with DT
+[ ] Audit cache/TLB maintenance for multi-core SoCs
+[ ] Remove any low-memory legacy constraints not needed
+
+--------------------------------------------------
+[SMP & CPU MANAGEMENT]
+--------------------------------------------------
+
+[ ] Verify SMP bring-up on ARMv7 multi-core SoCs
+[ ] Patch CPU hotplug logic if required for power savings
+[ ] Ensure correct IPI routing via GIC
+[ ] Validate scheduler behavior under mobile workloads
+[ ] Remove single-core-only assumptions
+
+--------------------------------------------------
+[INTERRUPTS & TIMERS]
+--------------------------------------------------
+
+[ ] Confirm GIC support is correct for target SoC
+[ ] Remove legacy timer backends (PC-style)
+[ ] Patch architected timer usage if missing
+[ ] Ensure tickless idle works if enabled
+[ ] Validate timer stability under suspend/resume
+
+--------------------------------------------------
+[POWER MANAGEMENT]
+--------------------------------------------------
+
+[ ] Integrate basic suspend/resume for mobile use
+[ ] Patch CPU idle states if required
+[ ] Tie power management hooks to DT-defined domains
+[ ] Remove desktop-oriented power assumptions
+[ ] Keep PM minimal and deterministic
+
+--------------------------------------------------
+[STORAGE & FILESYSTEMS]
+--------------------------------------------------
+
+[ ] Ensure eMMC support works correctly
+[ ] Validate block device naming for Android partitions
+[ ] Remove legacy disk assumptions (IDE, SATA, etc.)
+[ ] Keep filesystem set minimal (no distro expectations)
+
+--------------------------------------------------
+[ANDROID-SPECIFIC NEEDS]
+--------------------------------------------------
+
+[ ] Add Android-style init compatibility hooks if needed
+[ ] Patch binder or IPC support only if required by userspace
+[ ] Validate low-memory behavior for mobile workloads
+[ ] Keep Android-specific patches isolated and documented
+
+--------------------------------------------------
+[DRIVER CLEANUP]
+--------------------------------------------------
+
+[ ] Remove unused PC drivers and subsystems
+[ ] Audit drivers for DT-only operation
+[ ] Fail fast on missing hardware instead of probing forever
+[ ] Keep only drivers required for the target device
+
+--------------------------------------------------
+[SECURITY & HARDENING]
+--------------------------------------------------
+
+[ ] Review syscall surface and disable unused syscalls
+[ ] Ensure user/kernel memory separation is enforced
+[ ] Disable legacy debug interfaces not needed
+[ ] Keep attack surface minimal
+
+--------------------------------------------------
+[LOGGING & DEBUG]
+--------------------------------------------------
+
+[ ] Reduce boot-time logging verbosity
+[ ] Remove always-on debug prints
+[ ] Keep panic output minimal and reliable
+[ ] Ensure logs do not depend on unavailable consoles
+
+--------------------------------------------------
+[BUILD & CONFIGURATION]
+--------------------------------------------------
+
+[ ] Create Lumen-specific defconfig
+[ ] Remove unused kernel config options
+[ ] Lock architecture to ARMv7 only
+[ ] Ensure reproducible builds
+
+--------------------------------------------------
+[DOCUMENTATION]
+--------------------------------------------------
+
+[ ] Document every Lumen-specific patch
+[ ] Record why upstream behavior was changed
+[ ] Maintain UNSUPPORTED features list
+[ ] Keep patch scope explicit and finite
+
+--------------------------------------------------
+[NON-GOALS – DO NOT ADD]
+--------------------------------------------------
+
+- ARM64 support
+- x86 support
+- UEFI / BIOS support
+- ACPI
+- PC hardware compatibility
+- Generic platform abstractions
+- Feature completeness over finishability
+
+--------------------------------------------------
+End of TODO

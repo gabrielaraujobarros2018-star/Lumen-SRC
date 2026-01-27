@@ -1,0 +1,5 @@
+rootfs / ramfs rw 0 0
+proc /proc proc rw 0 0
+tmpfs /data tmpfs rw 0 0
+
+# Static snapshot

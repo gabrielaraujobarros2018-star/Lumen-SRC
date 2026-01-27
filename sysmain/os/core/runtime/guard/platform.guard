@@ -1,0 +1,2 @@
+FORBID=android.*
+FORBID=fastboot.*

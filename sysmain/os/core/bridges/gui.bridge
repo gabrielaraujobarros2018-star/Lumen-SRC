@@ -1,0 +1,15 @@
+bridge=gui
+direction=bidirectional
+protocol=text
+event-driven
+frame-aware
+latency-sensitive
+validated=true
+monitored
+audited
+recoverable
+sandboxed
+gui-owned
+system-critical
+do-not-edit
+end
