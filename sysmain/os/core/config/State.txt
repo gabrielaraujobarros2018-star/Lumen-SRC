@@ -1,0 +1,1 @@
+Currently, some booleans are defined in Header C files, so later i add the booleans names and values into the .ini files
