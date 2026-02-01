@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <appSettings>
+        <property name="BootanimMediaplayActivity" value="BMA for Handling Bootanimatios!" />
+        <property name="Version" value="0.5.10" />
+    </appSettings>
+    <database>
+        <host>localhost</host>
+        <port>5432</port>
+    </database>
+</config>

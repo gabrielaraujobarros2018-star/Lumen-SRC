@@ -1,0 +1,49 @@
+{
+  "SystemAppPIDs"
+    "displaybrightnesscontrolpipeline": "1"
+    "initsystemsrv": "2"
+    "inputcfg": "3"
+    "netmgr": "4"
+    "ppak": "5"
+    "palikey": "6"
+    "updatemgr": "7"
+    "shortcuthandler": "8"
+    }
+    
+  "CorePIDs"
+    "SysL": "1"
+    "flaglist": "2"
+    "Sys": "3"
+    "BMA": "4"
+    "Bootguard": "5"
+    "Bootmain": "6"
+    "Bootmisc": "7"
+    }
+
+  "SrvPIDs"
+    "invidious": "1"
+    "bma_srv": "2"
+    "Mail": "3"
+    "Neopunk3d": "4"
+    "Svc"
+      "compositor.svc": "5"
+      "logger.svc": "6"
+      "shell.svc": "7"
+      "watchdog.svc": "8"
+    "LumenServer": "9"
+    }
+
+  "k_internalApiPIDs"
+    "Debug API": "1"
+    "HW API": "2"
+    "Interfaces API": "3"
+    "Storage API": "4"
+    }
+
+  "system_internalApiPIDs"
+    "Debug API": "1"
+    "Sys API": "2"
+    "UI API": "3"
+    "Web API": "4"
+    }
+}

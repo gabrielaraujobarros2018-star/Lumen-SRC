@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <coreSettings>
+        <property name="osFLAGS" value="Just flags that could be used for something, but idk if it's really needed" />
+        <property name="flaglistPID" value="10" />
+    </appSettings>
+    <database>
+        <host>localhost</host>
+        <port>5432</port>
+    </database>
+</config>

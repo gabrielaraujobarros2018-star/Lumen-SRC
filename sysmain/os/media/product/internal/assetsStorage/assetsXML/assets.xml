@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <assetsserverSettings>
+        <property name="AssetsStorage" value="The place where assets live" />
+        <property name="version" value="1.0.0" />
+    </assetsserverSettings>
+    <database>
+        <host>localhost</host>
+        <port>5432</port>
+    </database>
+    
+    <assets>
+        <aud>mp3
+        <ico>png
+        <logo>png
+        <font>ttfhandwritten
+        <wp>jpeg
+    </assets>
+</config>
