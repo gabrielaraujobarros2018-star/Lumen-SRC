@@ -1,0 +1,18 @@
+{
+  "Samsung Galaxy A05S OS Server"
+    "os_server_ActivityState": "Unknown"
+    "os_server_Target": "Samsung Galaxy A05S A057M/DS"
+    "os_server_Version": "SGA05S_1.01"
+  }
+  
+  "Services"
+    "Arch": "srv_arm64_sam"
+    "DTBO": "srv_dtbo_droidSam"
+    "Device": "dev_srv_a057m"
+  }
+  
+  "DevInfo"
+    "DeviceName": "Lumen Consumer Device 0A1B2C"
+    "BasebandVersion": "A057MUBSADYG1"
+    "BuildNum": "AP3A.240905.015.A2.A057MUBSADYH1"
+}

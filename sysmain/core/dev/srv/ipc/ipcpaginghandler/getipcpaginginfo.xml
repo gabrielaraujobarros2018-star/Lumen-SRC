@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <ipcSettings>
+        <property name="GetIPCPagingInfo" value="Gets the IPC Paging Info. Depends on the dependency d.getipcinfo.rs" />
+        <property name="gipcpiVer" value="1.0.0" />
+        <GetTargetingInfo="GETIPCINFO" />      
+        <GetTargetingInfoDependency="d.getipcinfo.rs" />
+    </ipcSettings>
+    <database>
+        <host>localhost</host>
+        <port>5432</port>
+    </database>
+</config>

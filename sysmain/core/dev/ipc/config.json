@@ -1,0 +1,15 @@
+{
+  "Lumen IPC info"
+    "MemPage": "16kb"
+    "Lock": "Global"
+    "Enforce": "UID Management"
+    "BinderVer": "1.00.0.LIPC"
+    "BinderTarget": "Samsung Galaxy A05S A057M/DS"
+    "UID": "Unknown"
+  }
+
+  "IPC Services"
+    "handlers": "IpcPagingHandler"
+    "targeting": "IpcTargetingControl"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "Arm64 info"
+    "Regs": "31 gp 64bit regs" 
+    "Regs": "x0 ... x30"
+    "ISet": "A64"
+    "ExceptLevs": "El0 El1 El2 El3"
+    "SIMD": "Neon 32x128bit regs"
+    "Vector": "Scalable Extensions SVE/SVE2"
+  }
+  
+  "Arm64 Dev & Porting"
+    "ARM64EC": "Emulation Compatible ABI"
+    "CommonFlags": "march=armv8-a"
+    "SpecificFlags_CPUTune": "-mcpu=cortex-a72"
+    "Dependencies": "Vcpkg"
+  }
+}
