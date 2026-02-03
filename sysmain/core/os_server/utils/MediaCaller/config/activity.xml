@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <activitySettings>
+        <property name="MediaCaller" value="Main Mediacaller. API for developers to define file download paths" />
+        <property name="version" value="1.0.0" />
+    </activitySettings>
+    <fileManagement>
+        <targetHost="TargetHost" value="5432" />
+        <targetAbi="TargetAbi" value="ARMv7-a" />
+    </fileManagement>
+    <database>
+        <host>localhost</host>
+        <port>5432</port>
+    </database>
+</config>

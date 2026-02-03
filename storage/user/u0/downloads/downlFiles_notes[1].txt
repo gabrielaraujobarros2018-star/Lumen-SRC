@@ -1,0 +1,7 @@
+lumen downloads storage notes
+=========================
+
+1. Downloaded files should be stored in /storage/user/u0/downloads.
+2. Áudios should be stored within .downl file extension
+
+App Devs Pro Tip: Use MediaCaller to define on which storage directory to store the file/attachment.

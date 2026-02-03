@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <mediacallerSettings>
+        <property name="MedCallCLIENT" value="A client for MediaCall mainly for managing API Endpoint URLs and HTTP Requests." />
+        <property name="version" value="0.3.0" />
+    </mediacallerSettings>
+    <database>
+        <host>localhost</host>
+        <port>5432</port>
+    </database>
+</config>

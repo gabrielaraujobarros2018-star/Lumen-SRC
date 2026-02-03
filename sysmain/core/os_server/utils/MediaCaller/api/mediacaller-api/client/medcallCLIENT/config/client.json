@@ -1,0 +1,15 @@
+{
+  "MedCallCLIENT"
+    "RequestInit": "RI-MCCLIENT"
+    "StatusCodes": "200 400 401 403 404 500"
+    "Type": "Api-Client"
+    "clientcodeMaxChars": "17"
+    "Dependencies": "MediaCaller"
+  }
+
+  "Info"
+    "Version": "0.3.0"
+    "Name": "MediaCaller"
+    "ClientCode": "hxhfjdje28t8ghe2i"
+  }
+}
